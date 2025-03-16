@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "prompt-sync": "^4.2.0",
+    "type": "module"
+  },
+  "scripts": {
+    "start": "index.html"
+}
+}

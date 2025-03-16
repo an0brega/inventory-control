@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Manager</title>
+
+    <script type="module">
+        import StockManager from './StorageManagement/StockManager.js';
+        /*using this type of import the browser will recognize each class as a module
+        because of the ES6 standard the browser requires the code to be hosted on a HTTP server
+        */
+
+        class MainClass {
+            constructor() {
+                this.manager = new StockManager();
+            }
+
+            startApp() {
+
+                let numero = true;
+
+                while (numero) {
+                    alert('\n Welcome to the StockManager! \n Menu:\n 1.Adicionar Equipamento\n 2.Vender Equipamento \n 3.Exibir Estoque \n 4.Sair \n');
+
+                    const inputedOption = prompt('Digite aqui a opcao Desejada: ');
+                    //values received on prompt are always converted do string.
+
+                    switch (inputedOption) {
+                        case "1":
+                            const newEquipName = prompt('Name: ');
+                            const newequipQty = prompt('Quantity: ');
+                            this.manager.addEquipment(newEquipName, newequipQty);
+                            break;
+
+                        case "2":
+                            const toBeSoldEquipName = prompt('Equipment to be sold:');
+                            const toBeSoldEquipQuantity = prompt('Equipment quantity to be sold:');
+                            this.manager.removeEquipment(toBeSoldEquipName, toBeSoldEquipQuantity);
+
+                            this.manager.showStock();
+                            break;
+
+                        case "3":
+                            this.manager.showStock();
+                            break;
+
+                        case "4":
+                            alert('Thanks for using! Bye. \n');
+                            numero = false;
+                            break;
+                        default:
+                            alert("Invalid choice, try again.");
+                            break;
+                    }
+                }
+            }
+        }
+
+        window.onload = () => {
+            const main = new MainClass();
+            main.startApp();
+        };
+
+    </script>
+</head>
+
+<body>
+    <h1>Stock Manager</h1>
+</body>
+
+</html>
