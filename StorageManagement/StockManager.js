@@ -16,14 +16,18 @@ export default class StockManager {
      */
     addEquipment(name, quantity) {
         const nameToLowerCase = name.toLowerCase();
+        quantity = parseInt(quantity, 10);
 
         const equipmentExists = this.totalStock.some(equipment => equipment.equipmentName.toLowerCase() === nameToLowerCase);
         //.some() -> Verifies if at least one element of the array satisfies the condition, returns a boolean.
         //if the equipment imputed is equal to the one in lowerCase, it returns true.
 
-        if(equipmentExists){
-            alert(`The item: ${name} already exists on stock. \n`);
-            return;
+        if (equipmentExists) {
+            let item = this.totalStock.find(e => e.equipmentName.toLowerCase() === nameToLowerCase);
+            if (item) {
+                item.equipmentQuantity += quantity;
+            }
+            return; //Stops de execution
         }
 
         alert(`The item: ${name} was added to stock. \n`);
@@ -38,21 +42,22 @@ export default class StockManager {
      * @param {qtyToRemove} optional equipment name to be removed. 
      */
     removeEquipment(name, qtyToRemove = null) {
-        const itemFound = this.totalStock.findIndex(item => item.equipmentName === name);
+       const nameToLowerCase = name.toLowerCase();
+
+        const itemFound = this.totalStock.findIndex(item => item.equipmentName.toLowerCase() === nameToLowerCase);
 
         if (itemFound !== -1) {
-            //Why -1? If the findIndex method doesn't find a item, it returns a -1.
+            //Why -1? By default, if the findIndex method doesn't find a item, it returns a -1.
             const item = this.totalStock[itemFound];
 
             if (qtyToRemove === '') {
                 this.totalStock.splice(itemFound, 1)
-                alert(`\n The item: ${name} has been removed from the stock. \n`);
+                alert(`\n The item: ${name} and all his itens has been removed from the stock. \n`);
             }
 
-            if (item.equipmentQuantity >= qtyToRemove) {
+            if (item.equipmentQuantity >=  qtyToRemove) {
                 item.equipmentQuantity -= qtyToRemove; //reduces the quantity of the equipment inside the stock
                 alert(`${qtyToRemove} unit(s) of ${name} have been removed. \n`);
-                alert('This is all you have on stock now after the last deletion:\n ');
             } else
                 alert(`There's not enough quantity of ${name} in stock to remove. \n`);
         }
@@ -64,9 +69,14 @@ export default class StockManager {
      * Shows all the items currently on stock.
      */
     showStock() {
-        alert('This is all you have on stock: \n');
-        this.totalStock.forEach(item => {
-            alert(`Name: ${item.equipmentName}, quantity: ${item.equipmentQuantity}`);
-        })
+        if (this.totalStock.length === 0)
+            alert('Sorry, the stock is empty');
+        else {
+            this.totalStock.forEach(item => {
+                alert(`This is all you have on stock: 
+                Name: ${item.equipmentName}
+                Quantity: ${item.equipmentQuantity}`);
+            })
+        }
     }
 }

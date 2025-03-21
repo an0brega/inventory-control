@@ -20,9 +20,9 @@
                 let numero = true;
 
                 while (numero) {
-                    alert('\n Welcome to the StockManager! \n Menu:\n 1.Adicionar Equipamento\n 2.Vender Equipamento \n 3.Exibir Estoque \n 4.Sair \n');
+                    alert('\n Welcome to the StockManager! \n Menu:\n 1.Add Equipment \n 2.Sell Equipment \n 3.Show Stock \n 4.Exit \n');
 
-                    const inputedOption = prompt('Digite aqui a opcao Desejada: ');
+                    const inputedOption = prompt('Select and input an option: ');
                     //values received on prompt are always converted do string.
 
                     switch (inputedOption) {
@@ -36,8 +36,6 @@
                             const toBeSoldEquipName = prompt('Equipment to be sold:');
                             const toBeSoldEquipQuantity = prompt('Equipment quantity to be sold:');
                             this.manager.removeEquipment(toBeSoldEquipName, toBeSoldEquipQuantity);
-
-                            this.manager.showStock();
                             break;
 
                         case "3":
