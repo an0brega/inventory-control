@@ -1,6 +1,6 @@
 # inventory-control
 
-This project basically manages a simple stock system. You imput the name and quantity of an item, and can check, sell or add more of it.
+This project basically manages a simple stock system. You imput the name and quantity of an item and can check, sell or add more of it.
 
 ## Main Methods
 
@@ -16,3 +16,7 @@ Also receives the name and the quantity, but to remove the items from the array.
 
 Do not need parameters, but will show all items inside the array.
 
+
+#### Observation
+
+Requires to be ran on a server because of the `ES6 standard`.
