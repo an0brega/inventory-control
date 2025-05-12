@@ -1,6 +1,6 @@
 # 📦 Inventory Control
 
-A simple inventory management system made with JavaScript.  
+A simple inventory management system made with JavaScript and HTML.  
 You can add, remove, or view items in stock — all through basic methods and input handling.
 
 ---
