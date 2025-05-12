@@ -1,22 +1,52 @@
-# inventory-control
+# 📦 Inventory Control
 
-This project basically manages a simple stock system. You imput the name and quantity of an item and can check, sell or add more of it.
+A simple inventory management system made with JavaScript.  
+You can add, remove, or view items in stock — all through basic methods and input handling.
 
-## Main Methods
+---
 
-#### addEquipment 
+## 🚀 Features
 
-Receives the name and quantity as parameters do imput a new item or a new quantity.
+- ✅ Add new equipment or increase quantity
+- ❌ Remove equipment or decrease quantity
+- 👁️ Display the full stock list
 
-#### removeEquipment 
+---
 
-Also receives the name and the quantity, but to remove the items from the array.
+## 🛠️ Main Methods
 
-#### showStock 
+### `addEquipment(name, quantity)`
+Adds a new item or increases the quantity of an existing item.
 
-Do not need parameters, but will show all items inside the array.
+```
+addEquipment("Keyboard", 10);
 
+removeEquipment("Keyboard", 3);
 
-#### Observation
+showStock();
 
-Requires to be ran on a server because of the `ES6 standard`.
+```
+
+## ⚠️ Notes
+This project uses ES6 modules, so it needs to be run via a local or remote server environment (not directly from the file system).
+
+You can use a simple live server extension or run with tools like http-server or vite.
+
+## 📁 Project Structure
+```
+inventory-control/
+├── index.html
+└── StorageManagement/
+    └── Equipment.js
+    └── StockManager.js
+└── README.md 
+```
+## 💡 Future Improvements
+Add support for persistent storage (e.g. localStorage or backend)
+
+Input validation via UI
+
+Create a graphical interface
+
+👨‍💻 Author
+Made with 💙 by an0brega
